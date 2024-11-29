@@ -1,18 +1,51 @@
 <!DOCTYPE html> 
 <html lang="en"> 
 <head> 
+    {% load static %} 
     <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" > 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script defer src="/static/js/bootstrap.bundle.min.js"></script> 
     <title>{% block title %}{% endblock title %}</title> 
 </head> 
-<body>     
-    <h1>Логотип и Заголовок сайта</h1> 
-    <h4> <a href="{% url 'index' %}">Главная страница</a> <h4>ё
-    <h4> <a href="{% url 'about' %}">О компании</a> </h4>
-    <h4> <a href="{% url 'contact' %}">Контакты</a> </h4>
-
-    <div>{% block header%}{% endblock header %}</div> 
-    <div>{% block content%}{% endblock content %}</div> 
-
-    <h5>Подвал (footer) сайта</h5> 
+ 
+<body> 
+    <div class="container-fluid p-1 bg-secondary text-white text-center"> 
+        <div class="row"> 
+            <div class="col-2 "> 
+                <img style="width: 150px;" src="{% static 'images/SIS.jpg' %}"> 
+            </div> 
+            <div class="col-10 "> 
+                <h1>Это заголовок главной страницы сайта</h1> 
+            </div> 
+        </div> 
+    </div> 
+ 
+    <div class="container-fluid"> 
+        <div class="row bg-light text-center"> 
+            <h6> 
+                <a href="{% url 'index' %}">Главная страница</a> 
+                <a href="{% url 'my_form' %}">Форма</a> 
+                <a href="{% url 'about' %}">О компании</a>  
+                <a href="{% url 'contact' %}">Контакты</a> 
+            </h6> 
+        </div> 
+    </div> 
+ 
+    <div class="container-fluid"> 
+        <div class="row text-center text-primary fs-1 fw-bold"> 
+            <div>{% block header%}{% endblock header %}</div> 
+        </div> 
+        <div class="row text-center text-body"> 
+            <div>{% block content%}{% endblock content %}</div> 
+        </div> 
+    </div> 
+ 
+    <div class="container-fluid"> 
+        <div class="row bg-primary text-center text-white lh-1"> 
+            <p>Это подвал (footer) страниц сайта</p> 
+        </div> 
+    </div> 
 </body> 
 </html> 
