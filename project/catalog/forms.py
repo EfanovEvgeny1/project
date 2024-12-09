@@ -14,7 +14,20 @@ class UserForm(forms.Form):
 
     """
    
+
+    """
     file_path = forms.FilePathField(label="choose file", path="C:/", allow_files="True", allow_folders="True")
     num = forms.FloatField(label="Enter number")
     ip_address = forms.GenericIPAddressField(label="ip address", help_text="for example 192.0.2.0")
     file = forms.ImageField(label="image") 
+
+    """
+
+
+    name = forms.CharField(label="Имя", help_text="Введите ФИО")
+    age = forms.IntegerField(label="Возраст", min_value=1, max_value=120,
+    help_text='От 1 до 120 лет')
+    required_css_class = "field"
+    error_css_class = "error"
+
+    
