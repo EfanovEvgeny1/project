@@ -1,7 +1,7 @@
 from django import forms 
+from .models import Person
  
- 
-class UserForm(forms.Form): 
+class UserForm(forms.Form, forms.ModelForm): 
     """
     name = forms.CharField(label="Имя клиента", max_length=15, help_text="ФИО не более 15 символов")      
     age = forms.IntegerField(label="Возраст клиента") 
@@ -12,10 +12,6 @@ class UserForm(forms.Form):
     num = forms.DecimalField(label="Введите десятичное число", decimal_places=2) 
     email = forms.EmailField(label="Электронный адрес", help_text="Обязательный символ - @")
 
-    """
-   
-
-    """
     file_path = forms.FilePathField(label="choose file", path="C:/", allow_files="True", allow_folders="True")
     num = forms.FloatField(label="Enter number")
     ip_address = forms.GenericIPAddressField(label="ip address", help_text="for example 192.0.2.0")
@@ -29,5 +25,8 @@ class UserForm(forms.Form):
     help_text='От 1 до 120 лет')
     required_css_class = "field"
     error_css_class = "error"
+    class Meta:
+        model = Person
+        fields = '__all__'
 
     

@@ -33,8 +33,8 @@ def my_form(request):
 
 def my_form(request):
     if request.method == "POST": 
-        form = UserForm(request.POST) 
-        if form.is_valid(): 
+        form = UserForm(request.POST)
+        if form.is_valid():
             form.save()
 
     my_text = 'Сведения о клиентах'
