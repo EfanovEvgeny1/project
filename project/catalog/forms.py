@@ -1,7 +1,9 @@
 from django import forms 
 from .models import Person
 from .models import Image
-from .models import File  
+from .models import File
+from .models import AudioFile 
+from .models import VideoFile
  
 class UserForm(forms.Form, forms.ModelForm): 
     """
@@ -43,4 +45,13 @@ class FileForm(forms.ModelForm):
         model = File 
         fields = '__all__' 
 
-    
+class VideoForm(forms.ModelForm): 
+    class Meta: 
+        model = VideoFile 
+        fields = '__all__'
+
+
+class AudioForm(forms.ModelForm): 
+    class Meta: 
+        model = AudioFile 
+        fields = '__all__'
