@@ -5,6 +5,9 @@ from .models import Person
 from django.http import HttpResponseNotFound
 from .models import Image
 from .forms import ImageForm
+from .models import File 
+from .forms import FileForm
+
 
 def about(request):
     return render(request,"firstapp/about.html")
@@ -88,3 +91,20 @@ def delete_img(request, id):
     
     except Person.DoesNotExist:
         return HttpResponseNotFound("<h2>Объект не найден</h2>")
+    
+
+def form_up_pdf(request): 
+    if request.method == 'POST': 
+        form = FileForm(request.POST, request.FILES)         
+        if form.is_valid(): 
+            form.save() 
+ 
+    my_text = 'Загруженные файлы' 
+    form = FileForm()
+    file_obj = File.objects.all()   
+    context = {'my_text': my_text, "file_obj": file_obj, "form": form}     
+    return render(request, 'firstapp/form_up_pdf.html', context) 
+
+def delete_pdf(request, id):
+    try:
+    
